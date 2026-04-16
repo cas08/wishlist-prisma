@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique
+  fullName     String   @map("full_name")
+  passwordHash String   @map("password_hash")
+  description  String?
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  wishlists    Wishlist[]
+  reservations Reservation[]
+
+  @@map("users")
+}
+
+model Wishlist {
+  id          String    @id @default(uuid()) @db.Uuid
+  userId      String    @map("user_id") @db.Uuid
+  title       String
+  description String?
+  occasion    String?
+  isPublic    Boolean   @default(true) @map("is_public")
+  eventDate   DateTime? @map("event_date") @db.Date
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wishItems WishItem[]
+
+  @@index([userId])
+  @@map("wishlists")
+}
+
+enum Priority {
+  low
+  medium
+  high
+}
+
+enum ItemStatus {
+  free
+  reserved
+}
+
+model WishItem {
+  id          String     @id @default(uuid()) @db.Uuid
+  wishlistId  String     @map("wishlist_id") @db.Uuid
+  title       String
+  description String?
+  url         String?
+  imageUrl    String?    @map("image_url")
+  price       Decimal?   @db.Decimal(10, 2)
+  currency    String     @default("USD")
+  priority    Priority   @default(medium)
+  status      ItemStatus @default(free)
+  createdAt   DateTime   @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime   @updatedAt @map("updated_at") @db.Timestamptz
+
+  wishlist    Wishlist     @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
+  reservation Reservation?
+
+  @@index([wishlistId])
+  @@map("wish_items")
+}
+
+model Reservation {
+  id           String   @id @default(uuid()) @db.Uuid
+  wishItemId   String   @unique @map("wish_item_id") @db.Uuid
+  reserverId   String?  @map("reserver_id") @db.Uuid
+  reserverName String?  @map("reserver_name")
+  note         String?
+  isAnonymous  Boolean  @default(false) @map("is_anonymous")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  wishItem WishItem @relation(fields: [wishItemId], references: [id], onDelete: Cascade)
+  reserver User?    @relation(fields: [reserverId], references: [id], onDelete: SetNull)
+
+  @@map("reservations")
+}
