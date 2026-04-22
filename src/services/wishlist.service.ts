@@ -1,6 +1,6 @@
-import { prisma } from '../lib';
-import { HttpError } from '../utils/HttpError';
-import type { CreateWishlistInput, UpdateWishlistInput } from '../schemas';
+import { prisma } from '../lib/index.js';
+import { HttpError } from '../utils/HttpError.js';
+import type { CreateWishlistInput, UpdateWishlistInput } from '../schemas/index.js';
 
 function toEventDate(value: string | undefined): Date | null | undefined {
   if (value === undefined) return undefined;

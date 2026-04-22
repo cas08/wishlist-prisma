@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
-import { wishlistService } from '../services/';
-import type { CreateWishlistInput, UpdateWishlistInput } from '../schemas/';
+import { wishlistService } from '../services/index.js';
+import type { CreateWishlistInput, UpdateWishlistInput } from '../schemas/index.js';
 import { HttpError } from '../utils/HttpError.js';
 
 export const wishlistController = {

@@ -1,7 +1,7 @@
-import { Prisma } from '../../generated/prisma/client';
-import { prisma } from '../lib';
-import { HttpError } from '../utils/HttpError';
-import type { CreateWishItemInput, UpdateWishItemInput } from '../schemas';
+import { Prisma } from '../../generated/prisma/client.js';
+import { prisma } from '../lib/index.js';
+import { HttpError } from '../utils/HttpError.js';
+import type { CreateWishItemInput, UpdateWishItemInput } from '../schemas/index.js';
 
 async function assertWishlistOwner(wishlistId: string, userId: string) {
   const wishlist = await prisma.wishlist.findUnique({

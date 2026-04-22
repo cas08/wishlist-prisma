@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
-import { wishItemService } from '../services/';
-import type { CreateWishItemInput, UpdateWishItemInput } from '../schemas/';
-import { HttpError } from '../utils/HttpError';
+import { wishItemService } from '../services/index.js';
+import type { CreateWishItemInput, UpdateWishItemInput } from '../schemas/index.js';
+import { HttpError } from '../utils/HttpError.js';
 
 export const wishItemController = {
   async create(req: Request, res: Response) {

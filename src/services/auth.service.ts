@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
 import jwt, { type SignOptions } from 'jsonwebtoken';
-import { prisma } from '../lib';
-import { env } from '../config';
-import { HttpError } from '../utils/HttpError';
-import type { LoginInput, RegisterInput } from '../schemas';
+import { prisma } from '../lib/index.js';
+import { env } from '../config/index.js';
+import { HttpError } from '../utils/HttpError.js';
+import type { LoginInput, RegisterInput } from '../schemas/index.js';
 
 const SALT_ROUNDS = 10;
 

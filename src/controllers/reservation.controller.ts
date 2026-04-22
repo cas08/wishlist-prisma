@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
-import { reservationService } from '../services';
-import type { ReserveInput } from '../schemas/';
-import { HttpError } from '../utils/HttpError';
+import { reservationService } from '../services/index.js';
+import type { ReserveInput } from '../schemas/index.js';
+import { HttpError } from '../utils/HttpError.js';
 
 export const reservationController = {
   async reserve(req: Request, res: Response) {

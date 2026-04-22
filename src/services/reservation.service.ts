@@ -1,6 +1,6 @@
-import { prisma } from '../lib';
-import { HttpError } from '../utils/HttpError';
-import type { ReserveInput } from '../schemas';
+import { prisma } from '../lib/index.js';
+import { HttpError } from '../utils/HttpError.js';
+import type { ReserveInput } from '../schemas/index.js';
 
 export const reservationService = {
   async reserve(wishItemId: string, userId: string | undefined, input: ReserveInput) {

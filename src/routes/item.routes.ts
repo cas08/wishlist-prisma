@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { wishItemController, reservationController } from '../controllers';
-import { authMiddleware, optionalAuthMiddleware, validate } from '../middleware/';
-import { uuidParamSchema, updateWishItemSchema, reserveSchema } from '../schemas/';
+import { wishItemController, reservationController } from '../controllers/index.js';
+import { authMiddleware, optionalAuthMiddleware, validate } from '../middleware/index.js';
+import { uuidParamSchema, updateWishItemSchema, reserveSchema } from '../schemas/index.js';
 
 const router = Router();
 

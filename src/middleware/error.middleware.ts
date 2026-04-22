@@ -1,10 +1,10 @@
 import type { NextFunction, Request, Response } from 'express';
-import { Prisma } from '../../generated/prisma/client';
+import { Prisma } from '../../generated/prisma/client.js';
 import jwt from 'jsonwebtoken';
 
 const { JsonWebTokenError, TokenExpiredError } = jwt;
 import { ZodError } from 'zod';
-import { HttpError } from '../utils/HttpError';
+import { HttpError } from '../utils/HttpError.js';
 
 export function errorMiddleware(
   err: unknown,

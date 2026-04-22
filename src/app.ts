@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 
-import { env } from './config';
-import apiRouter from './routes/';
-import { errorMiddleware } from './middleware';
+import { env } from './config/index.js';
+import apiRouter from './routes/index.js';
+import { errorMiddleware } from './middleware/index.js';
 
 const app = express();
 

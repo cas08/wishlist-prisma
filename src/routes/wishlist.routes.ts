@@ -1,13 +1,13 @@
 import { Router } from 'express';
-import { wishlistController, wishItemController } from '../controllers';
-import { authMiddleware, optionalAuthMiddleware, validate } from '../middleware';
+import { wishlistController, wishItemController } from '../controllers/index.js';
+import { authMiddleware, optionalAuthMiddleware, validate } from '../middleware/index.js';
 import {
   uuidParamSchema,
   wishlistIdParamSchema,
   createWishlistSchema,
   updateWishlistSchema,
   createWishItemSchema,
-} from '../schemas';
+} from '../schemas/index.js';
 
 const router = Router();
 

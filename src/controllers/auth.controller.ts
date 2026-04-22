@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
-import { authService } from '../services/';
-import type { LoginInput, RegisterInput } from '../schemas/';
-import { HttpError } from '../utils/HttpError';
+import { authService } from '../services/index.js';
+import type { LoginInput, RegisterInput } from '../schemas/index.js';
+import { HttpError } from '../utils/HttpError.js';
 
 export const authController = {
   async register(req: Request, res: Response) {

@@ -1,3 +1,3 @@
-export { authMiddleware, optionalAuthMiddleware } from './auth.middleware';
-export { validate } from './validate.middleware';
-export { errorMiddleware } from './error.middleware';
+export { authMiddleware, optionalAuthMiddleware } from './auth.middleware.js';
+export { validate } from './validate.middleware.js';
+export { errorMiddleware } from './error.middleware.js';
