@@ -2,7 +2,7 @@
   "name": "web-wishlist-frontend",
   "private": true,
   "version": "1.0.0",
-  "description": "Wishlist frontend — React + TypeScript + Mantine",
+  "description": "Wishlist frontend - React + TypeScript + Mantine",
   "type": "module",
   "scripts": {
     "dev": "vite",

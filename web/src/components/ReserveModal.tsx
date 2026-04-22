@@ -42,7 +42,7 @@ export function ReserveModal({ item, opened, onClose, onSuccess }: Props) {
       notifications.show({
         color: 'teal',
         title: 'Заброньовано',
-        message: `«${item.title}» — ваше!`,
+        message: `«${item.title}» - ваше!`,
       });
       form.reset();
       onSuccess();

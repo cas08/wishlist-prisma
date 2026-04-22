@@ -7,7 +7,7 @@ export const createWishlistSchema = z.object({
   isPublic: z.boolean().optional(),
   eventDate: z
     .string()
-    .refine((v) => !Number.isNaN(Date.parse(v)), 'eventDate має бути валідною датою')
+    .refine((v) => !Number.isNaN(Date.parse(v)), 'eventDate must be a valid date')
     .optional(),
 });
 

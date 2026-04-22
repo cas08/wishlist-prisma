@@ -18,8 +18,6 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    // У dev — проксі на локальний Express (src/server.ts), щоб /api працював
-    // без CORS-танців і без хардкода URL.
     proxy: {
       '/api': {
         target: 'http://localhost:3000',

@@ -1,6 +1,6 @@
-import { prisma } from '../config/prisma';
+import { prisma } from '../lib';
 import { HttpError } from '../utils/HttpError';
-import type { ReserveInput } from '../schemas/reservation.schema';
+import type { ReserveInput } from '../schemas';
 
 export const reservationService = {
   async reserve(wishItemId: string, userId: string | undefined, input: ReserveInput) {
@@ -8,9 +8,9 @@ export const reservationService = {
       where: { id: wishItemId },
       include: { reservation: true },
     });
-    if (!item) throw new HttpError(404, 'Не знайдено');
+    if (!item) throw new HttpError(404, 'Not found');
     if (item.reservation || item.status === 'reserved') {
-      throw new HttpError(409, 'Цей подарунок уже заброньовано');
+      throw new HttpError(409, 'This item is already reserved');
     }
 
     let reserverName: string | null = input.reserverName ?? null;
@@ -25,7 +25,7 @@ export const reservationService = {
       }
     } else {
       if (!reserverName) {
-        throw new HttpError(400, 'reserverName обовʼязкове для анонімного бронювання');
+        throw new HttpError(400, 'reserverName is required for anonymous reservation');
       }
     }
 
@@ -53,7 +53,7 @@ export const reservationService = {
     });
     if (!reservation) throw new HttpError(404, 'Reservation not found');
     if (reservation.reserverId !== userId) {
-      throw new HttpError(403, 'Скасувати може лише той, хто бронював');
+      throw new HttpError(403, 'Only the user who reserved this item can cancel');
     }
 
     await prisma.$transaction([

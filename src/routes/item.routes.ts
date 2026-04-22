@@ -1,11 +1,7 @@
 import { Router } from 'express';
-import { wishItemController } from '../controllers/wishitem.controller';
-import { reservationController } from '../controllers/reservation.controller';
-import { authMiddleware, optionalAuthMiddleware } from '../middleware/auth.middleware';
-import { validate } from '../middleware/validate.middleware';
-import { uuidParamSchema } from '../schemas/common.schema';
-import { updateWishItemSchema } from '../schemas/wishitem.schema';
-import { reserveSchema } from '../schemas/reservation.schema';
+import { wishItemController, reservationController } from '../controllers';
+import { authMiddleware, optionalAuthMiddleware, validate } from '../middleware/';
+import { uuidParamSchema, updateWishItemSchema, reserveSchema } from '../schemas/';
 
 const router = Router();
 

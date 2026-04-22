@@ -1,10 +1,11 @@
 import type { NextFunction, Request, Response } from 'express';
-import { Prisma } from '../../generated/prisma/client.js';
-import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
+import { Prisma } from '../../generated/prisma/client';
+import jwt from 'jsonwebtoken';
+
+const { JsonWebTokenError, TokenExpiredError } = jwt;
 import { ZodError } from 'zod';
 import { HttpError } from '../utils/HttpError';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function errorMiddleware(
   err: unknown,
   _req: Request,

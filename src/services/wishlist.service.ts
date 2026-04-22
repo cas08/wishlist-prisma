@@ -1,6 +1,6 @@
-import { prisma } from '../config/prisma';
+import { prisma } from '../lib';
 import { HttpError } from '../utils/HttpError';
-import type { CreateWishlistInput, UpdateWishlistInput } from '../schemas/wishlist.schema';
+import type { CreateWishlistInput, UpdateWishlistInput } from '../schemas';
 
 function toEventDate(value: string | undefined): Date | null | undefined {
   if (value === undefined) return undefined;
@@ -31,7 +31,7 @@ export const wishlistService = {
     if (!wishlist) throw new HttpError(404, 'Wishlist not found');
 
     if (!wishlist.isPublic && wishlist.userId !== viewerId) {
-      throw new HttpError(403, 'Цей вішліст приватний');
+      throw new HttpError(403, 'This wishlist is private');
     }
 
     return wishlist;

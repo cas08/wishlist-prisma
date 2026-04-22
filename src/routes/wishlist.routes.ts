@@ -1,11 +1,13 @@
 import { Router } from 'express';
-import { wishlistController } from '../controllers/wishlist.controller';
-import { wishItemController } from '../controllers/wishitem.controller';
-import { authMiddleware, optionalAuthMiddleware } from '../middleware/auth.middleware';
-import { validate } from '../middleware/validate.middleware';
-import { uuidParamSchema, wishlistIdParamSchema } from '../schemas/common.schema';
-import { createWishlistSchema, updateWishlistSchema } from '../schemas/wishlist.schema';
-import { createWishItemSchema } from '../schemas/wishitem.schema';
+import { wishlistController, wishItemController } from '../controllers';
+import { authMiddleware, optionalAuthMiddleware, validate } from '../middleware';
+import {
+  uuidParamSchema,
+  wishlistIdParamSchema,
+  createWishlistSchema,
+  updateWishlistSchema,
+  createWishItemSchema,
+} from '../schemas';
 
 const router = Router();
 
