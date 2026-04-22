@@ -1,6 +1,6 @@
 {
   "framework": null,
-  "outputDirectory": "web/dist",
+  "outputDirectory": "public",
   "buildCommand": "pnpm vercel-build",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api" },
