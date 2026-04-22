@@ -1,5 +1,7 @@
 {
+  "framework": null,
   "outputDirectory": "web/dist",
+  "buildCommand": "pnpm vercel-build",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api" },
     { "source": "/((?!api|assets|.*\\..*).*)", "destination": "/index.html" }
