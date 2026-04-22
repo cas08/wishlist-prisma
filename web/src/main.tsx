@@ -1,6 +1,7 @@
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -20,6 +21,7 @@ createRoot(container).render(
       <ModalsProvider>
         <Notifications position="top-right" />
         <App />
+        <SpeedInsights />
       </ModalsProvider>
     </MantineProvider>
   </StrictMode>,
